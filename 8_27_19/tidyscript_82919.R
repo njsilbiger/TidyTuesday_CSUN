@@ -28,7 +28,6 @@ dataplot<-ggplot(SData, aes(x = season, y = n))+
   ylab("Number of guest stars")+
   theme_bw()
 
-
 # add a picture of bart simpson as the background)
 Simpsonplot<-ggdraw() +
   draw_plot(dataplot)+
