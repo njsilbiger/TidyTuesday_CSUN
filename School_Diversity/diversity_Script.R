@@ -21,7 +21,7 @@ school_diversity$diverse<- factor(school_diversity$diverse, ordered = TRUE,
                                   levels = c( "Extremely undiverse", "Undiverse", "Diverse"))
 
 
-### Make a segment plot where if diversity increased the color is blue, stayed the same its black, and decreased its red
+### Make a segment plot where if diversity increased the color is blue, stayed the same its grey, and decreased its red
 school_diversity$diverse_num<-as.numeric(school_diversity$diverse)
 
 # Only look at large city schools in CA
@@ -29,14 +29,11 @@ sub_diversity<-school_diversity %>%
   filter(ST =='CA', d_Locale_Txt == 'city-large')%>% # large city schools in CA
   group_by(diverse, diverse_num, SCHOOL_YEAR)
 
-## add some random values to jitter the 
+## add some random values to jitter the y
 sub_diversity$diverse_num[sub_diversity$SCHOOL_YEAR=='1994-1995']<-sub_diversity$diverse_num[sub_diversity$SCHOOL_YEAR=='1994-1995']+runif(n = length(sub_diversity), min = -0.4, max = 0.4)
 
 # make another dataframe with just the 1994 data for the labels
 sub_diversity2<-sub_diversity[sub_diversity$SCHOOL_YEAR=='1994-1995',]
-
-#point vector
-d2<-data.frame(x = c(2,2,2), y = c(1,2,3))
 
 ## Also look at difference between 1995 and 2016
 sub_diversity%>%
@@ -60,6 +57,3 @@ sub_diversity%>%
   theme_solarized() +
   ggsave('School_Diversity/Diversity.png')
   
-
-  
-#position = position_nudge (y = jitter(x = 0,factor = 0.2)
