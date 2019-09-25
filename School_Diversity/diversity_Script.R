@@ -6,6 +6,7 @@
 ### Load libraries ######
 library(tidyverse)
 library(ggthemes)
+library(ggrepel)
 
 
 ### read the data
@@ -44,16 +45,16 @@ sub_diversity%>%
   spread(SCHOOL_YEAR, mean)%>% # spread the columns by year
   mutate(diff = as.factor(round(`2016-2017` - `1994-1995` ))) %>%# subtract the 2 and round so that I can use it for colors
   na.omit()%>%
-  tail(n = 20)%>%
+  tail(n = 27)%>%
   ggplot(aes(y = `1994-1995`, yend =`2016-2017`, x = 1, xend = 2))+
   geom_segment(aes(color = diff))+
   geom_point(aes(color = diff))+
-  geom_text(aes(x = 1, y = `1994-1995`, label =LEA_NAME, color = diff ), position = position_nudge(x = -.25, y = jitter(x = 0,factor = 0.2)))+
+  geom_text_repel(aes(x = 1, y = `1994-1995`, label =LEA_NAME, color = diff ), nudge_x = -0.25, force = 3,nudge_y = jitter(x = 0,factor = 0.2 ))+
   scale_color_manual(values=c("red", "grey", "lightblue", "darkblue"), name = 'Change in diversity',
                      label = c("Lower Diversity", "Stayed the same", "Increased a little", "Increased a lot"))+
   scale_x_continuous(breaks=c(1,2),
-                   labels=c("1994 - 1996", "2016 - 2017"), name = "", limits = c(0.5, 2) )+
-  scale_y_continuous(breaks = c(1,2,3),labels=c("Extremely undiverse","Undiverse", "Diverse"), name = "")+
+                   labels=c("1994 - 1996", "2016 - 2017"), name = "", limits = c(-0.75, 2) )+
+  scale_y_continuous(breaks = c(1,2,3),labels=c("Extremely undiverse","Undiverse", "Diverse"), name = "", limits = c(1,3.5))+
   ggtitle("Change in diversity of large city schools in CA")+
   theme(axis.text=element_text(size=16,face="bold"))+
   theme_solarized() +
@@ -61,4 +62,4 @@ sub_diversity%>%
   
 
   
-
+#position = position_nudge (y = jitter(x = 0,factor = 0.2)
