@@ -36,7 +36,7 @@ commute_mode<-commute_mode %>%
 ## help from J Byrnes on how to get city names and lat/longs
 
 #get my apis flowin'
-register_google(key = 'AIzaSyCKWkPE9oETSilasqh9OZOqgLQscoXeLJ8') ### use your own API
+register_google(key = '') ### use your own API
 ## Info on how here (https://www.r-bloggers.com/geocoding-with-ggmap-and-the-google-api/)
 
 # #download the data and add geocoding
