@@ -16,7 +16,7 @@ library(patchwork)
 ## image of beer mug
 imgurl<-"https://www.dlf.pt/png/list/14/141262_beer-mug-icon-png.png"
 
-#what are the top 3 and bottom 2 states
+#what are the top 3 and bottom 2 states for total number of barrels across all years
 top<-beer_states %>%
   group_by(state)%>%
   summarise(total = sum(barrels, na.rm = TRUE))%>%
