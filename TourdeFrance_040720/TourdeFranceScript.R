@@ -37,7 +37,7 @@ p2<-tdf_winners %>%
   mutate(Year = year(start_date))%>%
   ggplot(aes(y =stage_wins, x = Year ))+
   geom_point()+
-  xlab("Time to finish (hours)")+
+  xlab("Year")+
   ylab("Number of stages won")+
   ggtitle("Stages wins versus year")+
   theme(plot.title = element_text(hjust = 0.5, size = 14))
