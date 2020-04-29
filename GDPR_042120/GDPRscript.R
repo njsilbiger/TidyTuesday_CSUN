@@ -28,7 +28,8 @@ violdata<-gdpr_violations %>%
   drop_na(Articles) %>%# remove all the NAs again
 # We need to count the number of unique groupings from country to article # 
   group_by(name, Articles)%>%
-  count()  
+  count()%>%
+  filter(Articles != 2018) ## pretty sure "article 2018" is a typo
 
 # From these flows we need to create a node data frame: it lists every entities involved in the flow
 nodes <- data.frame(name=c(as.character(violdata$name), as.character(violdata$Articles)) %>% unique())
