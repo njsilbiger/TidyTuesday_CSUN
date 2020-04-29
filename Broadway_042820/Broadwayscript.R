@@ -33,7 +33,6 @@ myplot<-ggplot(highestgrossing, aes(years, rank, color = show)) +
   geom_bump(size = 1)+
   geom_text_repel(data = first_time, aes(years, rank,label = show), force = 5, nudge_y = 0.25)+
   geom_point(data = first_time, aes(years, rank), size = 5)+
-  theme(legend.position = "none")+
   theme_minimal() +
   scale_y_reverse() +
   scale_x_continuous(breaks = seq(1985,2020,5))+
