@@ -1,4 +1,5 @@
 ### Tidy Tuesday Animal Crossing ###
+## Code by Nyssa Silbiger ###
 
 ## load libraries
 library(tidyverse)
