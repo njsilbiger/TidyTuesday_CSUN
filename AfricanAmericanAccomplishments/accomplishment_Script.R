@@ -57,9 +57,10 @@ p2<-people %>% # try to clean up the names
         panel.border = element_rect(colour = "black", fill=NA, size=5)
   )
 
-
+# make patchwork
 final_plot<-p1/p2 + plot_annotation(caption = "Plot by N. Silbiger \n@NSilbiger")
 
+#save plot
 ggsave(final_plot,
        filename = "AfricanAmericanAccomplishments/AccomPlot.png", width = 14, height = 7)
 
